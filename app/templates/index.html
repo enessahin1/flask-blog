@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{%block title%}Index!{%endblock%}
+
+{%block main_content%}
+
+	<h1>Index</h1>
+	<div class="row">
+		{% for post in posts %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="http://placehold.it/360x200" class="img-polaroid">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text">{{ post.body }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+	</div>
+
+{%endblock%}
