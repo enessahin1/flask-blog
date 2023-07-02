@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import redirect, url_for, g, request, render_template, Blueprint
+from flask import redirect, url_for, request, render_template, Blueprint
 from flask_login import current_user
 
 from app import db
@@ -18,8 +18,8 @@ def index():
 
 @post_bp.route('/create-post/', methods=['GET', 'POST'])
 def create_post():
-    if g.user is None or not g.user.is_authenticated:
-        return redirect(url_for('index'))
+    if current_user is None or not current_user.is_authenticated:
+        return redirect(url_for('post_bp.index'))
     form = PostForm()
     if request.method == 'POST':
         post = Post(
@@ -29,5 +29,5 @@ def create_post():
             author=current_user)
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('post_bp.index'))
     return render_template('create_post.html', title='Create Post', form=form)
