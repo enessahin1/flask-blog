@@ -12,8 +12,3 @@ class RegisterForm(FlaskForm):
     username = TextAreaField(u'username', validators=[InputRequired()])
     password = PasswordField(u'password', validators=[InputRequired()])
     repeat_password = PasswordField(u'repeat password', validators=[InputRequired()])
-
-
-class PostForm(FlaskForm):
-    title = TextAreaField(u'title', validators=[InputRequired()])
-    body = TextAreaField(u'body', validators=[InputRequired()])
